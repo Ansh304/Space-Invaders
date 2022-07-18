@@ -42,14 +42,14 @@ for i in range(no_of_enemy):
     enemy_img.append(pygame.image.load('enemy.png '))
     enemy_X.append(random.randint(0, 735))
     enemy_Y.append(random.randint(50, 150))
-    enemy_Y_change.append(40)
-    enemy_X_change.append(3)
+    enemy_Y_change.append(25)
+    enemy_X_change.append(2)
 
 # bullet
 bullet_img = pygame.image.load('bullet.png')
 bullet_X = player_X
 bullet_Y = player_Y
-bullet_Y_change = 8
+bullet_Y_change = 4
 bullet_X_change = 0
 bullet_state = 'ready'  # state { ready -> you can see the bullet in the screen
 # fire -> the bullet is currently moving }
@@ -118,10 +118,10 @@ while running:
         # checking which keystrock is pressed from key borard or checking the key board functnality
         if event.type == pygame.KEYDOWN:  # IT CHECK that key is pressed now
             if event.key == pygame.K_LEFT:  # for preesing left key
-                player_X_change = -4  # move left side
+                player_X_change = -2  # move left side
 
             if event.key == pygame.K_RIGHT:  # for preesing right key
-                player_X_change = 4  # move right side
+                player_X_change = 2  # move right side
 
             if event.key == pygame.K_SPACE:  # for shoot the bullet
                 if bullet_state == 'ready':
@@ -156,11 +156,11 @@ while running:
 
         enemy_X[i] += enemy_X_change[i]
         if enemy_X[i] <= 0:
-            enemy_X_change[i] = 3
+            enemy_X_change[i] = 2
             enemy_Y[i] += enemy_Y_change[
                 i]  # this line for when enemy touches wall it come downword by 40 or any other we want
         elif enemy_X[i] >= 736:
-            enemy_X_change[i] = -3
+            enemy_X_change[i] = -2
             enemy_Y[i] += enemy_Y_change[i]
 
         # collision
